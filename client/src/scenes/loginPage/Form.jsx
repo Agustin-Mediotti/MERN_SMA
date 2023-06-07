@@ -117,8 +117,8 @@ const Form = () => {
         <form onSubmit={handleSubmit}>
           <Box
             display={"grid"}
-            gap={"30px"}
-            gridTemplateColumns={"repeat(4, minmax(0, 1fr))"}
+            gap={"15px"}
+            gridTemplateColumns={"repeat(2, minmax(1, 1fr))"}
             sx={{
               "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
             }}
@@ -153,7 +153,7 @@ const Form = () => {
                   name={"location"}
                   error={touched.location && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
-                  sx={{ gridColumn: "span 4" }}
+                  sx={{ gridColumn: "span 3" }}
                 />
                 <TextField
                   label="Ocupation"
@@ -163,7 +163,7 @@ const Form = () => {
                   name={"occupation"}
                   error={touched.occupation && Boolean(errors.occupation)}
                   helperText={touched.occupation && errors.occupation}
-                  sx={{ gridColumn: "span 4" }}
+                  sx={{ gridColumn: "span 1" }}
                 />
                 <Box
                   gridColumn={"span 4"}
@@ -209,7 +209,7 @@ const Form = () => {
               name={"email"}
               error={touched.email && Boolean(errors.email)}
               helperText={touched.email && errors.email}
-              sx={{ gridColumn: "span 4" }}
+              sx={{ gridColumn: "span 2" }}
             />
             <TextField
               label="Password"
@@ -220,7 +220,7 @@ const Form = () => {
               name={"password"}
               error={touched.password && Boolean(errors.password)}
               helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
+              sx={{ gridColumn: "span 2" }}
             />
           </Box>
 
