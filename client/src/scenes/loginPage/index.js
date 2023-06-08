@@ -21,6 +21,7 @@ const LoginPage = () => {
         width={isNonMobileScreens ? "50%" : "93%"}
         p={"2rem"}
         m={"2rem auto"}
+        borderRadius={"1rem"}
         backgroundColor={theme.palette.background.alt}
       >
         <Typography

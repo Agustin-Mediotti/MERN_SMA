@@ -41,7 +41,7 @@ const initialValuesRegister = {
   picture: "",
 };
 
-const initialvaluesLogin = {
+const initialValuesLogin = {
   email: "",
   password: "",
 };
@@ -71,6 +71,8 @@ const Form = () => {
 
     if (savedUser) {
       setPageType("login");
+      alert("User successfully registered!");
+      // TODO: dispatch action to set user in state and navigate to home page.
     }
   };
 
@@ -101,7 +103,7 @@ const Form = () => {
   return (
     <Formik
       onSubmit={handleFormSubmit}
-      initialValues={isLogin ? initialvaluesLogin : initialValuesRegister}
+      initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
       validationSchema={isLogin ? loginSchema : registeredSchema}
     >
       {({
@@ -156,7 +158,7 @@ const Form = () => {
                   sx={{ gridColumn: "span 3" }}
                 />
                 <TextField
-                  label="Ocupation"
+                  label="Occupation"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.occupation}
@@ -232,8 +234,9 @@ const Form = () => {
               sx={{
                 m: "2rem 0",
                 p: "1rem",
+                fontWeight: "bold",
                 backgroundColor: palette.primary.main,
-                color: palette.background.light,
+                color: palette.neutral.light,
                 "&:hover": { color: palette.primary.main },
               }}
             >
