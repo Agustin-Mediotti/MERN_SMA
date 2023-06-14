@@ -1,8 +1,7 @@
 import Post from "../models/Post.js";
-
 import User from "../models/User.js";
-import router from "../routes/auth.js";
-/* CERATE */
+
+/* CREATE */
 
 export const createPost = async (req, res) => {
   try {
@@ -19,7 +18,6 @@ export const createPost = async (req, res) => {
       likes: {},
       comments: [],
     });
-
     await newPost.save();
 
     const post = await Post.find();
@@ -33,10 +31,10 @@ export const createPost = async (req, res) => {
 
 export const getFeedPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
-    res.status(200).json(posts);
+    const post = await Post.find();
+    res.status(200).json(post);
   } catch (err) {
-    router.status(404).json({ error: err.message });
+    res.status(404).json({ message: err.message });
   }
 };
 
@@ -46,7 +44,7 @@ export const getUserPosts = async (req, res) => {
     const post = await Post.find({ userId });
     res.status(200).json(post);
   } catch (err) {
-    router.status(404).json({ error: err.message });
+    res.status(404).json({ message: err.message });
   }
 };
 
@@ -56,7 +54,7 @@ export const likePost = async (req, res) => {
   try {
     const { id } = req.params;
     const { userId } = req.body;
-    const post = await Post.findById(userId);
+    const post = await Post.findById(id);
     const isLiked = post.likes.get(userId);
 
     if (isLiked) {
@@ -70,8 +68,9 @@ export const likePost = async (req, res) => {
       { likes: post.likes },
       { new: true }
     );
-    res.status(200).json({ updatedPost });
+
+    res.status(200).json(updatedPost);
   } catch (err) {
-    router.status(404).json({ error: err.message });
+    res.status(404).json({ message: err.message });
   }
 };
