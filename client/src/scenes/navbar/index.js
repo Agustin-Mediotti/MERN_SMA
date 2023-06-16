@@ -46,7 +46,8 @@ const Navbar = () => {
     <FlexBetween padding={"1rem 6%"} backgroundColor={alt}>
       <FlexBetween gap={"1.75rem"}>
         <Typography
-          fontWeight={"bold"}
+          fontFamily={"Alfa Slab One"}
+          letterSpacing={"0.09em"}
           fontSize={"clamp(1rem, 2rem, 2.25rem)"}
           color={"primary"}
           onClick={() => navigate("/home")}
@@ -57,7 +58,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          Tomblr
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween

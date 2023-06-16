@@ -8,13 +8,19 @@ const LoginPage = () => {
 
   return (
     <Box>
-      <Box width={"100%"} backgroundColor={theme.palette.background.alt}>
+      <Box
+        width={"100%"}
+        backgroundColor={theme.palette.background.alt}
+        p="1rem 6%"
+        textAlign="center"
+      >
         <Typography
-          fontWeight={"bold"}
-          fontSize={"clamp(1rem, 2rem, 2.25rem)"}
-          color={"primary"}
+          fontSize="32px"
+          color="primary"
+          fontFamily={"Alfa Slab One"}
+          letterSpacing={"0.09em"}
         >
-          Sociopedia
+          Tomblr
         </Typography>
       </Box>
       <Box
@@ -26,11 +32,11 @@ const LoginPage = () => {
       >
         <Typography
           textAlign={"center"}
-          fontWeight={"500"}
+          fontWeight={"bold"}
           variant={"h4"}
           sx={{ mb: "1.5rem" }}
         >
-          Sociopedia, the Social Media for Sociopaths!
+          Explore trending topics on Tumblr.
         </Typography>
         <Form />
       </Box>
