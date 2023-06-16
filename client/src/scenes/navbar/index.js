@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import {
   Box,
@@ -31,7 +30,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px");
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
@@ -44,7 +43,7 @@ const Navbar = () => {
     user === null ? "Default User" : `${user.firstName} ${user.lastName}`;
 
   return (
-    <FlexBetween padding={"1 rem 6%"} backgroundColor={alt}>
+    <FlexBetween padding={"1rem 6%"} backgroundColor={alt}>
       <FlexBetween gap={"1.75rem"}>
         <Typography
           fontWeight={"bold"}
@@ -77,7 +76,7 @@ const Navbar = () => {
 
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
-        <FlexBetween gap={"2rem"}>
+        <FlexBetween gap="2rem">
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{ fontSize: "25px" }} />
@@ -108,10 +107,8 @@ const Navbar = () => {
             >
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
-                <MenuItem onClick={() => dispatch(setLogout())}>
-                  Log Out
-                </MenuItem>
               </MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>
@@ -124,6 +121,7 @@ const Navbar = () => {
       )}
 
       {/* MOBILE NAV */}
+
       {!isNonMobileScreens && isMobileMenuToggled && (
         <Box
           position={"fixed"}
@@ -136,6 +134,7 @@ const Navbar = () => {
           backgroundColor={background}
         >
           {/* CLOSE ICON */}
+
           <Box display={"flex"} justifyContent={"flex-end"} p={"1rem"}>
             <IconButton
               onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
@@ -143,7 +142,9 @@ const Navbar = () => {
               <Close />
             </IconButton>
           </Box>
+
           {/* MENU ITEMS */}
+
           <FlexBetween
             display={"flex"}
             flexDirection={"column"}
@@ -184,9 +185,9 @@ const Navbar = () => {
               >
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
-                  <MenuItem onClick={() => dispatch(setLogout())}>
-                    Log Out
-                  </MenuItem>
+                </MenuItem>
+                <MenuItem onClick={() => dispatch(setLogout())}>
+                  Log Out
                 </MenuItem>
               </Select>
             </FormControl>
