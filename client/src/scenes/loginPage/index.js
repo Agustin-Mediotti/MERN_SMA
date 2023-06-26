@@ -36,7 +36,7 @@ const LoginPage = () => {
           variant={"h4"}
           sx={{ mb: "1.5rem" }}
         >
-          Explore trending topics on Tumblr.
+          Explore trending topics on Tomblr.
         </Typography>
         <Form />
       </Box>
