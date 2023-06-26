@@ -12,6 +12,7 @@ jobs:
     steps:
     - name: Generate coverage report
       run: |
+        ls
         cd client/
         npm run test
     - name: Upload coverage to Codecov
