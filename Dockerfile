@@ -12,7 +12,7 @@ RUN npm install
 
 # Listen for traffic on specified port
 
-EXPOSE 80
+EXPOSE 3001
 
 # Define the entry point for the container
 CMD ["node", "index.js"]
