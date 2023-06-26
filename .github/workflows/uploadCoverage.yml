@@ -1,0 +1,10 @@
+﻿name: 'Upload Coverage'
+description: 'Uploads code coverage reports to codecov with separate flags for separate packages'
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload Website Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./client/coverage/clover.xml
+        flags: website
