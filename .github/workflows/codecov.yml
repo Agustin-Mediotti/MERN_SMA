@@ -10,19 +10,22 @@ jobs:
       OS: ${{ matrix.os }}
       NODE: '18'
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install node.js v18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
     - name: Generate coverage report
       run: |
-        ls
         cd client/
         npm run test
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-        #token: ${{ secrets.CODECOV_TOKEN }}
         directory: ./client/coverage/
-        #env_vars: OS,PYTHON
-        #fail_ci_if_error: true
-        #files: ./coverage1.xml,./coverage2.xml,!./cache
-        #flags: unittests
-        #name: codecov-umbrella
         verbose: true
