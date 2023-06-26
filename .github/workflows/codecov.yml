@@ -1,0 +1,45 @@
+name: Tests
+on:
+  push:
+  pull_request:
+concurrency:
+  # Group based on workflow name and PR if it exists, if no PR, let it run so carryforward flags work
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install node.js v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build dependencies (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: npm build
+
+      - name: Build dependencies (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: npm build
+
+      - name: Tests (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: npm test
+
+      - name: Tests (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: npm test
+
+      - name: Upload Coverage
+        if: github.repository_owner == 'Agustin-Mediotti'
+        uses: .github/workflows/uploadCoverage
