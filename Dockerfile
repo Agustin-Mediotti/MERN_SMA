@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /server
 
 # Copy the application files into the working directory
-COPY . /server
+COPY ./server /server
 
 # Install the application dependencies
 RUN npm install
