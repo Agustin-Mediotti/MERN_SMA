@@ -10,5 +10,9 @@ COPY ./server /server
 # Install the application dependencies
 RUN npm install
 
+# Listen for traffic on specified port
+
+EXPOSE 80
+
 # Define the entry point for the container
 CMD ["node", "index.js"]
